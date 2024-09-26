@@ -4,7 +4,7 @@ import {findBeeperById, filterBeeperByStatus } from "../utils/data.utils";
 const FILE_NAME = "./src/dal/beepers.json";
 
 
-export async function readBeeperByIdFromDb(id: number): Promise<Beeper> 
+export async function readBeeperByIdFromDb(id: string): Promise<Beeper> 
 {
   try {
     const beepers:Beeper[] = await jsonfile.readFile(FILE_NAME);

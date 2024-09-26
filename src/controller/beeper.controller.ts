@@ -22,7 +22,7 @@ export async function postNewBeeper(req: Request, res: Response):Promise<number|
 export async function getBeeperById(req: Request, res: Response):Promise<Beeper | void>
 {
     try {
-    const beeperId: number = parseInt(req.params.id)
+    const beeperId: string = req.params.id
     const beeper: Beeper = await readBeeperByIdFromDb(beeperId)
     if(beeper) {
     res.status(200).json(beeper)
@@ -52,7 +52,7 @@ export async function getAllBeeper(req: Request, res: Response):Promise<Beeper[]
 }
 export async function deleteBeeperById(req: Request, res: Response):Promise<void>
 {
-    const beeperId: number = parseInt(req.params.id)
+    const beeperId: string = req.params.id
     try{
 
         await deleteBeeperfromDb(beeperId)
@@ -77,7 +77,7 @@ export async function getBeepersByStatus(req: Request, res: Response):Promise<Be
 
 export async function updateBeeperStatusById(req: Request, res: Response):Promise<void>
 {
-    const beeperId: number = parseInt(req.params.id)
+    const beeperId: string = req.params.id
     try{
         const updateStatus = await updateBeeperStatusByIdAtDb(beeperId)
         if(!updateStatus) {

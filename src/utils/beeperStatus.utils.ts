@@ -19,7 +19,7 @@ export function updateStatus(status:string): string
 
 }
 
-export async function deployedBeeper(id:number):Promise<void>
+export async function deployedBeeper(id:string):Promise<void>
 {
      setTimeout(()=> updateBeeperStatusByIdAtDb(id) , 10000)
 }

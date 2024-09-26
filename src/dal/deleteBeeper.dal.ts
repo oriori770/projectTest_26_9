@@ -3,7 +3,7 @@ import {Beeper} from "../models/biper.model";
 import { deleteBeeperFromArr } from "../utils/data.utils";
 // import  from "./dataUsers.json"
 const FILE_NAME = "./src/dal/beepers.json";
-export async function deleteBeeperfromDb(id:number) : Promise<void> 
+export async function deleteBeeperfromDb(id:string) : Promise<void> 
 {
     try {
         const beepers:Beeper[] = await jsonfile.readFile(FILE_NAME);

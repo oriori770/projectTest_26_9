@@ -1,10 +1,13 @@
 import { Beeper } from "../models/biper.model";
+import { v4 as uuidv4 } from 'uuid';
 
 let id:number = 1000
-function idManger():number
+function idManger():string
 {
-    return ++id;
+  const newId = uuidv4();
+  return newId;  
 }
+
 export function createNewbeeper(name:string):Beeper
 {
     const newBeeper: Beeper = {
@@ -15,7 +18,7 @@ export function createNewbeeper(name:string):Beeper
     }
     return newBeeper
 }
-export function findBeeperById(beeperArr:Beeper[] , id:number):Beeper
+export function findBeeperById(beeperArr:Beeper[] , id:string):Beeper
 {
          const beeper :Beeper|undefined = beeperArr.find((b:Beeper) => b.id === id)
          if (beeper)
@@ -24,7 +27,7 @@ export function findBeeperById(beeperArr:Beeper[] , id:number):Beeper
          }
          else throw new Error("Beeper not found");
 }
-export function deleteBeeperFromArr(beeperArr:Beeper[] , id:number):Beeper[]
+export function deleteBeeperFromArr(beeperArr:Beeper[] , id:string):Beeper[]
 {
     const beepers :Beeper[] = beeperArr.filter((b)=>b.id != id)
     return beepers

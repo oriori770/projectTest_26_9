@@ -3,7 +3,7 @@ import {Beeper} from "../models/biper.model";
 import { createNewbeeper } from "../utils/data.utils";
 // import  from "./dataUsers.json"
 const FILE_NAME = "./src/dal/beepers.json";
-export async function addBeeperToDb(name:string) : Promise<number |undefined> 
+export async function addBeeperToDb(name:string) : Promise<string |undefined> 
 {
     try {
       let beepers:Beeper[]|any = [];

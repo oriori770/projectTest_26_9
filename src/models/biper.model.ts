@@ -1,5 +1,5 @@
 export interface Beeper{
-    id: number
+    id: string;
     name?: string
     status: string
     createDate: Date

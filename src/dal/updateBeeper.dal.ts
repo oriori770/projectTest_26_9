@@ -5,7 +5,7 @@ import {updateStatus,deployedBeeper} from "../utils/beeperStatus.utils";
 // import { log } from "console";
 // import  from "./dataUsers.json"
 const FILE_NAME = "./src/dal/beepers.json";
-export async function updateBeeperStatusByIdAtDb(id:number) : Promise<string> 
+export async function updateBeeperStatusByIdAtDb(id:string) : Promise<string> 
 {
     let newStatus :string = "";
       try {
