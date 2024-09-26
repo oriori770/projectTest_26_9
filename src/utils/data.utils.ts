@@ -5,11 +5,10 @@ function idManger():number
 {
     return ++id;
 }
-export function createNewbeeper(name:string):Beeper
+export function createNewbeeper():Beeper
 {
     const newBeeper: Beeper = {
         id: idManger(),
-        name,
         status: "manufactured",
         createDate: new Date()
     }
