@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
+import beeperRoter from "./Routing/beeper.Routing"
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
+app.use("/api", beeperRoter)
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to the Node.js + TypeScript API!");
