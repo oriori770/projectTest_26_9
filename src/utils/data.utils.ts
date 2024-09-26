@@ -23,3 +23,8 @@ export function findBeeperById(beeperArr:Beeper[] , id:number):Beeper
          }
          else throw new Error("Beeper not found");
 }
+export function deleteBeeperFromArr(beeperArr:Beeper[] , id:number):Beeper[]
+{
+    const beepers :Beeper[] = beeperArr.filter((b)=>b.id != id)
+    return beepers
+}

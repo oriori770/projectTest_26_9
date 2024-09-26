@@ -2,6 +2,7 @@ import {Response, Request} from "express"
 import {Beeper} from "../models/biper.model"
 import {addBeeperToDb} from "../dal/createBeeper.dal"
 import { readBeeperByIdFromDb, readAllBeeperFromDb } from "../dal/readBeeper.dal"
+import {deleteBeeperfromDb} from "../dal/deleteBeeper.dal"
 export async function postNewBeeper(req: Request, res: Response):Promise<number|void>
 {
     const  beeperId:number|any = await addBeeperToDb()
@@ -31,4 +32,10 @@ export async function getAllBeeper(req: Request, res: Response):Promise<Beeper[]
     res.status(404).json({error: "Beeper not found"})
     }
 
+}
+export async function deleteBeeperById(req: Request, res: Response):Promise<void>
+{
+    const beeperId: number = parseInt(req.params.id)
+    await deleteBeeperfromDb(beeperId)
+    res.status(200)
 }
