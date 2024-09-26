@@ -7,7 +7,8 @@ import {updateBeeperStatusByIdAtDb} from "../dal/updateBeeper.dal";
 export async function postNewBeeper(req: Request, res: Response):Promise<number|void>
 {
     try {
-    const  beeperId:number|any = await addBeeperToDb()
+    const name = req.params.name
+    const  beeperId:number|any = await addBeeperToDb(name)
     if(beeperId) {
     res.status(201).json(beeperId)
     } else {

@@ -3,7 +3,7 @@ import {Beeper} from "../models/biper.model";
 import { createNewbeeper } from "../utils/data.utils";
 // import  from "./dataUsers.json"
 const FILE_NAME = "./src/dal/beepers.json";
-export async function addBeeperToDb() : Promise<number |undefined> 
+export async function addBeeperToDb(name:string) : Promise<number |undefined> 
 {
     try {
       let beepers:Beeper[]|any = [];
@@ -18,7 +18,7 @@ export async function addBeeperToDb() : Promise<number |undefined>
         }
       }
       // הוסף את המשתמש החדש לרשימה הקיימת
-      const newbeeper = createNewbeeper();
+      const newbeeper = createNewbeeper(name);
       beepers.push(newbeeper);
       // כתוב את כל הנתונים חזרה לקובץ
       await jsonfile.writeFile(FILE_NAME, beepers, { spaces: 2 });
