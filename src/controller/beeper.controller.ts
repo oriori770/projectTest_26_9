@@ -3,6 +3,7 @@ import {Beeper} from "../models/biper.model"
 import {addBeeperToDb} from "../dal/createBeeper.dal"
 import { readBeeperByIdFromDb, readAllBeeperFromDb, readBeepersByStatusFromDb } from "../dal/readBeeper.dal"
 import {deleteBeeperfromDb} from "../dal/deleteBeeper.dal"
+import {updateBeeperStatusByIdAtDb} from "../dal/updateBeeper.dal";
 export async function postNewBeeper(req: Request, res: Response):Promise<number|void>
 {
     try {
@@ -72,3 +73,21 @@ export async function getBeepersByStatus(req: Request, res: Response):Promise<Be
     }
 
 }
+
+export async function updateBeeperStatusById(req: Request, res: Response):Promise<void>
+{
+    const beeperId: number = parseInt(req.params.id)
+    try{
+        const updateStatus = await updateBeeperStatusByIdAtDb(beeperId)
+        if(!updateStatus) {
+            res.status(404).json({error: updateStatus})
+            return
+        }
+        res.status(200).json({updateStatus})
+    }
+    catch(error) {
+        res.status(500).json({error: "Failed to update beeper status"})
+        return
+    }
+}
+
