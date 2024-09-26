@@ -7,13 +7,28 @@ const FILE_NAME = "./src/dal/beepers.json";
 export async function readBeeperByIdFromDb(id: number): Promise<Beeper> 
 {
   try {
-    const users:Beeper|any = await jsonfile.readFile(FILE_NAME);
-    const user = findBeeperById(users, id);
-    if (user) {
-      console.log(user);
-      return user;
+    const beepers:Beeper|any = await jsonfile.readFile(FILE_NAME);
+    const beeper = findBeeperById(beepers, id);
+    if (beeper) {
+      console.log(beeper);
+      return beeper;
     } else {
-      throw new Error(`User with id ${id} not found.`);
+      throw new Error(`beeper with id ${id} not found.`);
+    }
+  } catch (err) {
+    console.error("Error reading file:", err);
+    throw err;
+  }
+}
+export async function readAllBeeperFromDb(): Promise<Beeper[]> 
+{
+  try {
+    const beepers:Beeper[]|any = await jsonfile.readFile(FILE_NAME);
+    if (beepers) {
+      console.log(beepers);
+      return beepers;
+    } else {
+      throw new Error(`beepers not found.`);
     }
   } catch (err) {
     console.error("Error reading file:", err);
