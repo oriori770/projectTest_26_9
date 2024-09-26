@@ -28,3 +28,8 @@ export function deleteBeeperFromArr(beeperArr:Beeper[] , id:number):Beeper[]
     const beepers :Beeper[] = beeperArr.filter((b)=>b.id != id)
     return beepers
 }
+export function filterBeeperByStatus(beeperArr:Beeper[] , status:string):Beeper[]
+{
+    const beepers :Beeper[] = beeperArr.filter((b)=>b.status === status)
+    return beepers
+}
