@@ -14,3 +14,12 @@ export function createNewbeeper():Beeper
     }
     return newBeeper
 }
+export function findBeeperById(beeperArr:Beeper[] , id:number):Beeper
+{
+         const beeper :Beeper|undefined = beeperArr.find((b:Beeper) => b.id === id)
+         if (beeper)
+         {
+            return beeper
+         }
+         else throw new Error("Beeper not found");
+}
